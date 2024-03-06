@@ -1,0 +1,104 @@
+#browse-courses {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    .container {
+
+        .course-boxes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+
+            .box {
+                border: 1px solid $gray-100;
+                @include shadow-l;
+                border-radius: 10px;
+                margin-bottom: 1.5rem;
+
+                &:hover {
+                    @include theme-shadow;
+                }
+
+                img {
+                    width: 100%;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                }
+
+                .box-content {
+                    margin: 20px;
+
+                    .title {
+                        padding-top: 1rem;
+                    }
+    
+                    .author {
+                        @include text-s;
+                    }
+        
+                    .price {
+                        @include text-lg;
+                        color: $theme;
+                        font-weight: 700;
+                    }
+        
+                    .length-rating {
+                        border-top: 1px solid $gray-300;
+                        display: flex;
+                        padding-top: 1.5rem;
+                        align-items: center;
+    
+     
+                        img {
+                            height: 20px;
+                            width: 20px;
+                            margin-right: 5px;
+                        }
+                        
+                        p {
+                            @include text-s;
+                            margin: 0;
+                            margin-right: 10px;
+                        }
+                    }
+                }  
+            }
+        }
+
+        .pagination {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        a {
+            margin-left: 15px;
+            color: $gray-800;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            text-align: center;
+            border-radius: 5px;
+            text-align: center;
+
+            &:hover {
+                background-color: $gray-200;
+            }
+        }
+
+        .active {
+            background-color: $theme;
+            color: white;
+            transform: scale(1.2);
+            @include theme-shadow;
+
+            &:hover {
+                background-color: $theme;
+            }
+        }
+
+
+
+    }
+}

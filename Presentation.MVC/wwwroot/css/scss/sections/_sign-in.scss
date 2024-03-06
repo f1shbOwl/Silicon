@@ -1,0 +1,77 @@
+#sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 526px;
+
+        .heading {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: flex-start;
+            
+        }
+        
+        .form {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            
+            @include form-standard;
+
+            input {
+                @include input-standard;
+            }
+            
+        }
+
+        .form-check {
+            
+            input[type=checkbox] {
+                border: 2px solid $gray-500;
+                box-shadow: none;
+                width: 18px;
+                height: 18px;
+                margin-right: 10px;
+            }
+
+            input[type=checkbox]:checked {
+                border: 2px solid $theme;
+                background-color: $theme;
+            }
+            
+        }
+
+        .login {
+            padding-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+            text-align: center;
+            
+            a {
+                @include form-standard;
+                color: $theme;
+                padding-top: 1rem;
+            }
+
+            button {
+                width: 100%;
+                @include theme-shadow;
+            }
+
+            
+        }
+
+    }
+}

@@ -1,0 +1,122 @@
+#light-dark {
+
+    @include xxl {
+        position: relative;
+        display: flex;
+    }
+
+    
+
+
+    .content {
+
+        @include xxl {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .dark {
+
+            @include xxl {
+                display: relative;
+                height: 988px;
+                width: 50vw;
+                background-color: $gray-900;
+                align-items: flex-start;
+                padding-top: 5rem;
+
+            }
+
+            .left {
+
+
+                @include xxl {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: flex-start;
+
+                    .left-h1 {
+
+                        @include xxl {
+        
+                            @include h1;
+                            color: white;
+                            position: absolute;
+                            margin-right: 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .light {
+
+            @include xxl {
+                background-color: white;
+                position: relative;
+                height: 988px;
+                width: 50vw;
+                padding-top: 5rem;
+
+            }
+
+            .right {
+
+                .right-h1 {
+                    @include xxl {
+                        @include h1;
+                        margin-left: 0.5rem;
+                        color: $gray-900;
+                    }
+                }
+            }
+
+
+        }
+
+
+        .image-center {
+
+            @include xxl {
+
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .image {
+                
+
+                @include xxl {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                img {
+
+                    @include xxl {
+                        position: absolute;
+                        z-index: 1;
+                    }
+
+                }
+
+                .macbook {
+                    @include xxl {
+                        padding-top: 7rem;
+                    }
+                }
+
+            }
+            
+        }
+
+    }
+    
+
+}

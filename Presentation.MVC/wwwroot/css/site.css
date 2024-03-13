@@ -251,6 +251,7 @@ a:hover {
   color: #FFFFFF;
   padding-top: 10px;
   padding-bottom: 13px;
+  border: none;
 }
 .btn-theme-s:hover {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
@@ -361,6 +362,59 @@ a:hover {
   text-decoration: none;
   background: #565973;
   color: #FFFFFF;
+}
+
+form {
+  width: 100%;
+  display: grid;
+}
+form .input-group {
+  display: grid;
+}
+form .checbox-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+form .checbox-group input[type=checkbox] {
+  height: 1.2rem;
+  width: 1.2rem;
+  border: 0.063rem solid red;
+}
+form .checbox-group label {
+  margin: 0;
+  font-weight: 400;
+}
+form label {
+  margin-bottom: 0.188rem;
+  font-weight: 700;
+}
+form input {
+  padding: 1rem;
+  border-radius: 0.5rem !important;
+  border: 0.063rem solid #D4D7E5;
+}
+form input::placeholder {
+  opacity: 0.4;
+}
+form input.input-validation-error {
+  border: 0.063rem solid #EF4444 !important;
+  color: #EF4444;
+}
+form input.input-validation-error::placeholder {
+  color: #EF4444;
+}
+form span.field-validation-error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
 }
 
 header {
@@ -1266,82 +1320,180 @@ header .container .btn-mobile {
   box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
 }
 
-#sign-up {
+#signup {
+  height: 100%;
+}
+#signup .container {
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding-top: 5rem;
-  padding-bottom: 1rem;
+  align-items: center;
+  height: 100%;
 }
-#sign-up .container {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  width: 526px;
+@media (min-width: 992px) {
+  #signup .container {
+    width: 60%;
+  }
 }
-#sign-up .container .heading {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  align-items: flex-start;
+@media (min-width: 1200px) {
+  #signup .container {
+    width: 40%;
+  }
 }
-#sign-up .container .heading a {
+#signup .container form {
+  padding: 1rem;
+}
+#signup .container form a {
   text-decoration: underline;
 }
-#sign-up .container .names {
-  display: flex;
-  gap: 1rem;
-  width: 526px;
-}
-#sign-up .container .form {
-  width: 526px;
-  display: flex;
-  flex-direction: column;
+#signup .container form p {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
-  font-weight: 600;
-  color: #0B0F19;
+  font-size: 16px !important;
 }
-#sign-up .container .form input {
-  border: 1px solid #D4D7E5;
-  border-radius: 5px;
-  padding: 10px 15px 10px 15px;
-  outline: none;
-  margin-bottom: 1rem;
+#signup .container form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
 }
-#sign-up .container .form input::placeholder {
-  color: #B4B7C9;
+@media (min-width: 768px) {
+  #signup .container form .content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms";
+  }
 }
-#sign-up .container .form-check input[type=checkbox] {
-  border: 2px solid #B4B7C9;
-  box-shadow: none;
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
+#signup .container form .content #form-firstname {
+  grid-area: firstname;
 }
-#sign-up .container .form-check input[type=checkbox]:checked {
-  border: 2px solid #6366F1;
-  background-color: #6366F1;
+#signup .container form .content #form-lastname {
+  grid-area: lastname;
 }
-#sign-up .container .form-check a {
-  text-decoration: underline;
-  color: #6366F1;
+#signup .container form .content #form-email {
+  grid-area: email;
 }
-#sign-up .container .sign-up-button {
-  padding-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+#signup .container form .content #form-password {
+  grid-area: password;
 }
-#sign-up .container .sign-up-button button {
-  width: 100%;
-  box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
+#signup .container form .content #form-confirm {
+  grid-area: confirm;
+}
+#signup .container form .content #form-terms {
+  grid-area: terms;
+  padding: 1rem 0;
+}
+#signup .container form .content #form-terms label {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+#signup .container form .content #form-terms span.field-validation-error {
+  position: static;
+  top: 0;
+  right: 0;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
+}
+#signup .container form .content #form-submit {
+  grid-area: button;
 }
 
+/*#sign-up {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 526px;
+
+        .heading {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: flex-start;
+
+            a {
+                text-decoration: underline;
+            }
+
+        }
+
+        .names {
+            display: flex;
+            gap: 1rem;
+            width: 526px;
+
+
+        }
+
+        .form {
+            width: 526px;
+            display: flex;
+            flex-direction: column;
+
+            @include form-standard;
+
+            input {
+                @include input-standard;
+            }
+
+        }
+
+        .form-check {
+
+            input[type=checkbox] {
+                border: 2px solid $gray-500;
+                box-shadow: none;
+                width: 18px;
+                height: 18px;
+                margin-right: 10px;
+            }
+
+            input[type=checkbox]:checked {
+                border: 2px solid $theme;
+                background-color: $theme;
+            }
+
+            a {
+                text-decoration: underline;
+                color: $theme;
+
+            }
+
+        }
+
+        .sign-up-button {
+            padding-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+            text-align: center;
+
+
+            button {
+                width: 100%;
+                @include theme-shadow;
+            }
+
+
+        }
+
+    }
+}*/
 #account-details .container {
   display: flex;
   padding-top: 3rem;

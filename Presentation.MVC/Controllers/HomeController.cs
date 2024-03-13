@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Presentation.MVC.Models.Views;
+using Presentation.MVC.ViewModels.Views;
 
 namespace Presentation.MVC.Controllers;
 

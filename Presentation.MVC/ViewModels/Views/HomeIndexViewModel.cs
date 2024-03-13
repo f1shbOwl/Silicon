@@ -1,6 +1,6 @@
 ﻿using Presentation.MVC.Models.Sections;
 
-namespace Presentation.MVC.Models.Views;
+namespace Presentation.MVC.ViewModels.Views;
 
 public class HomeIndexViewModel
 {
@@ -21,4 +21,4 @@ public class HomeIndexViewModel
                     new() { ImageUrl = "images/brands/brand_4.svg", AltText = "Brand Name 4" },
                 ],
     };
- }
+}

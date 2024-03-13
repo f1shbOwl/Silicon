@@ -1,0 +1,98 @@
+#newsletter {
+    background-color: $gray-100;
+
+
+    .container {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+
+        
+        .heading {
+            display: flex;
+            gap: 2rem;
+            padding-bottom: 2rem;
+        }
+
+
+        .content {
+            display: flex;
+
+
+            .text {
+                max-width: 150px;
+            }
+
+
+            .check-boxes {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                padding-bottom: 2rem;
+                
+
+                .form-check {
+                    padding-left: 3rem;
+                    
+
+                    input[type=checkbox] {
+                        border: 2px solid $gray-500;
+                        box-shadow: none;
+                        width: 18px;
+                        height: 18px;
+                        margin-right: 10px;
+                    }
+
+                    input[type=checkbox]:checked {
+                        border: 2px solid $theme;
+                        background-color: $theme;
+                    }
+                }
+
+            }
+
+
+        }
+
+
+        .subscribe {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+
+            .form-group {
+                
+
+                input {
+                    width: 600px;
+                    padding: 12px 35px;
+                    border-radius: 8px;
+
+                }
+
+
+
+            }
+
+            .form-control {
+                background-image: url('/images/bx-envelope.svg');
+                background-repeat: no-repeat;
+                background-position: 10px;
+
+            }
+
+            .form-control::placeholder {
+                color: $gray-500;
+            }
+
+        }
+
+
+        
+        .terms {
+            display: flex;
+        }
+
+    }
+}

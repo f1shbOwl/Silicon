@@ -1,0 +1,130 @@
+#download {
+    background-color: $gray-100;
+
+
+    .container {
+        background-color: $gray-200;
+        padding-top: 3rem;
+
+        @include xxl {
+            display: flex;
+            padding-left: 5rem;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        
+
+        .content {
+
+            @include xxl {
+                padding-left: 7rem;
+                padding-top: 5rem;
+            }
+            
+
+            h1 {
+                @include h1;
+                width: 400px;
+            }
+
+            .app-store {
+
+                @include xxl {
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 2rem;
+                    padding-bottom: 1rem;
+                    
+                    
+                }
+
+                p {
+                    @include text-m;
+                    margin: 0;
+                }
+
+            }
+
+            .apple-content {
+                display: flex;
+                padding-bottom: 3rem;
+                
+                .award-rating {
+                    
+                    h4 {
+                        @include h4;
+                        margin: 0;
+
+                    }
+
+                    p {
+                        @include text-m;
+                        margin: 0;
+                    }
+
+                }
+
+                .appstore-button {
+
+
+                    button {
+                        border: none;
+                        margin-left: 2rem;
+                        margin-top: 0.5rem;
+                    }
+                }
+            }
+
+
+
+            .google-play {
+
+                @include xxl {
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 2rem;
+                    padding-bottom: 1rem;
+                    
+                    
+                }
+
+                p {
+                    @include text-m;
+                    margin: 0;
+                }
+
+            }
+
+            .google-content {
+                display: flex;
+                padding-bottom: 3rem;
+
+                .award-rating {
+
+                    h4 {
+                        @include h4;
+                        margin: 0;
+
+                    }
+
+                    p {
+                        @include text-m;
+                        margin: 0;
+                    }
+
+                }
+
+                .play-button {
+
+                    button {
+                        border: none;
+                        margin-left: 1.7rem;
+                        margin-top: 0.5rem;
+                    }
+
+                }
+            }
+        }
+
+    }
+}

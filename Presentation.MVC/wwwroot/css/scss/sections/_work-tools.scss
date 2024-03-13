@@ -1,0 +1,50 @@
+#work-tools {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    .container {
+        text-align: center;
+
+        h1 {
+            @include h1;
+        }
+
+        p {
+            @include text-lg;
+            color: $gray-600;
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .tools {
+            padding-top: 5rem;
+            gap: 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            
+
+            .box {
+                padding: 20px;
+                text-align: left;
+
+                &:hover {
+                    @include shadow-l;
+                    border-radius: 10px;
+                }
+
+                img {
+                    
+                    padding-bottom: 1rem;
+                }
+                
+
+                p {
+                    @include text-m;
+                    width: 260px;
+                }
+
+            }
+
+        }
+    }
+}

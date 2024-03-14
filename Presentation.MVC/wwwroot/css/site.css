@@ -368,44 +368,44 @@ form {
   width: 100%;
   display: grid;
 }
-form .input-group {
+form .content .input-group {
   display: grid;
 }
-form .checbox-group {
+form .content .checkbox-group {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
 }
-form .checbox-group input[type=checkbox] {
-  height: 1.2rem;
-  width: 1.2rem;
+form .content .checkbox-group input[type=checkbox] {
+  height: 1rem;
+  width: 1rem;
   border: 0.063rem solid red;
 }
-form .checbox-group label {
+form .content .checkbox-group label {
   margin: 0;
   font-weight: 400;
 }
-form label {
+form .content label {
   margin-bottom: 0.188rem;
   font-weight: 700;
 }
-form input {
+form .content input {
   padding: 1rem;
   border-radius: 0.5rem !important;
   border: 0.063rem solid #D4D7E5;
 }
-form input::placeholder {
+form .content input::placeholder {
   opacity: 0.4;
 }
-form input.input-validation-error {
+form .content input.input-validation-error {
   border: 0.063rem solid #EF4444 !important;
   color: #EF4444;
 }
-form input.input-validation-error::placeholder {
+form .content input.input-validation-error::placeholder {
   color: #EF4444;
 }
-form span.field-validation-error {
+form .content span.field-validation-error {
   position: absolute;
   top: 0;
   right: 0;
@@ -1245,81 +1245,146 @@ header .container .btn-mobile {
   box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
 }
 
-#sign-in {
+#signin {
+  height: 100%;
+}
+#signin .container {
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding-top: 5rem;
-  padding-bottom: 1rem;
+  align-items: center;
+  height: 100%;
 }
-#sign-in .container {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  width: 526px;
+@media (min-width: 992px) {
+  #signin .container {
+    width: 60%;
+  }
 }
-#sign-in .container .heading {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  align-items: flex-start;
+@media (min-width: 1200px) {
+  #signin .container {
+    width: 30%;
+  }
 }
-#sign-in .container .form {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  max-width: 800px;
+#signin .container form {
+  padding: 1rem;
+}
+#signin .container form p {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
-  font-weight: 600;
-  color: #0B0F19;
+  font-size: 16px !important;
 }
-#sign-in .container .form input {
-  border: 1px solid #D4D7E5;
-  border-radius: 5px;
-  padding: 10px 15px 10px 15px;
-  outline: none;
-  margin-bottom: 1rem;
+#signin .container form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-auto-columns: 1fr;
+  grid-template-areas: "email" "password" "remember" "button" "forgot";
 }
-#sign-in .container .form input::placeholder {
-  color: #B4B7C9;
+#signin .container form .content #form-email {
+  grid-area: email;
 }
-#sign-in .container .form-check input[type=checkbox] {
-  border: 2px solid #B4B7C9;
-  box-shadow: none;
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
+#signin .container form .content #form-password {
+  grid-area: password;
 }
-#sign-in .container .form-check input[type=checkbox]:checked {
-  border: 2px solid #6366F1;
-  background-color: #6366F1;
+#signin .container form .content #form-remember {
+  grid-area: remember;
+  padding: 1rem 0;
 }
-#sign-in .container .login {
-  padding-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+#signin .container form .content #form-remember label {
+  margin-left: 0.3rem;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+#signin .container form .content #form-submit {
+  grid-area: button;
+}
+#signin .container form .content #form-forgot-password {
+  grid-area: forgot;
+  margin: 1rem 0 0 0;
   text-align: center;
-}
-#sign-in .container .login a {
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-weight: 600;
-  color: #0B0F19;
-  color: #6366F1;
-  padding-top: 1rem;
-}
-#sign-in .container .login button {
-  width: 100%;
-  box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
+  font-weight: 700;
 }
 
+/*#sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 526px;
+
+        .heading {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: flex-start;
+
+        }
+
+        .form {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+
+            @include form-standard;
+
+            input {
+                @include input-standard;
+            }
+
+        }
+
+        .form-check {
+
+            input[type=checkbox] {
+                border: 2px solid $gray-500;
+                box-shadow: none;
+                width: 18px;
+                height: 18px;
+                margin-right: 10px;
+            }
+
+            input[type=checkbox]:checked {
+                border: 2px solid $theme;
+                background-color: $theme;
+            }
+
+        }
+
+        .login {
+            padding-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+            text-align: center;
+
+            a {
+                @include form-standard;
+                color: $theme;
+                padding-top: 1rem;
+            }
+
+            button {
+                width: 100%;
+                @include theme-shadow;
+            }
+
+
+        }
+
+    }
+}*/
 #signup {
   height: 100%;
 }

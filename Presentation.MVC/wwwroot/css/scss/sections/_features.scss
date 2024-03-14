@@ -1,0 +1,77 @@
+.features {
+    background-color: $gray-100;
+    
+
+    .container {
+
+        @include xxl {
+
+            padding-top: 100px;
+            padding-bottom: 100px;
+            text-align: center;
+            
+            
+            h1 {
+                @include h1;
+            }
+    
+            .p-header {
+                @include text-lg;
+                color: $gray-600;
+                width: 650px;
+                margin: 0 auto;
+                margin-bottom: 4rem;
+            }
+
+        }
+
+
+
+
+        .tool-features {
+
+            @include xxl {
+
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                
+
+            }
+
+
+            .box {
+
+                @include xxl {
+
+                    &:hover {
+                        background-color: white;
+                        border-radius: 10px;
+                    }
+
+                    padding: 2rem;
+                    border-right: 1px solid $gray-300;
+                    border-bottom: 1px solid $gray-300;
+                    
+
+                    &:nth-child(3n) {
+                        border-right: none;
+                    }
+
+                    &:nth-last-child(-n+3) {
+                        border-bottom: none;
+                    }
+                }
+
+
+                h5 {
+                    @include h5;
+                }
+
+                p {
+                    @include standard-text;
+                }
+            }
+
+        }
+    }
+}

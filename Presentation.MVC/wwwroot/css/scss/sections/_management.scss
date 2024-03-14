@@ -1,0 +1,58 @@
+#management {
+    padding-top: 5rem;
+
+    .container {
+
+        @include xxl {
+            display: flex;
+            gap: 5rem;
+        }
+
+        img {
+            @include xxl {
+                margin-left: -3rem;
+            }
+            
+        }
+
+        .content {
+            padding-top: 8rem;
+            padding-left: 2rem;
+
+            h2 {
+
+                @include h2;
+            }
+
+
+            .check-box {
+                
+
+                i {
+
+                    @include xxl {
+                        color: $info;
+                        margin-right: 0.5rem;
+                        padding-bottom: 1rem;
+                    }
+
+                   
+                }
+
+                span {
+                    @include standard-text;
+                }
+                
+            }
+
+            .btn-theme {
+
+                @include xxl {
+                    width: 159px;
+                    margin-top: 3rem;
+                    align-content: center;
+                }  
+            }
+        }       
+    }
+}

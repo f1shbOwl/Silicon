@@ -1,0 +1,215 @@
+#account-details {
+    
+
+    .container {
+        display: flex;
+        padding-top: 3rem;
+        gap: 1rem;
+        
+        
+
+        .sidebar {
+            text-align: center;
+            padding-top: 2rem;
+            
+            
+    
+    
+            .user {
+               
+                .avatar {
+                    position: relative;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
+                    
+                    
+    
+                    button {
+                        position: absolute;
+                        border: 2px solid $gray-300;
+                        height: 36px;
+                        width: 36px;
+                        border-radius: 50%;
+                        background-color: white;
+                        
+                        margin-left: 5rem;
+                        
+
+                    }
+    
+    
+                }
+    
+                .name {
+                    
+                }
+            }
+            
+            .buttons {
+                padding-top: 1rem;
+    
+                .btn-theme-s {
+                    border: none;
+                    margin-bottom: 5px;
+                    padding-right: 8rem;
+                    
+                    
+                    
+                }
+                
+    
+                .btn-gray {
+                    background-color: transparent;
+                    color: $gray-800;
+                    @include form-standard;
+                    
+                    
+                    
+                    &:hover {
+                        color: $gray-800;
+                        text-decoration: underline;
+                    }
+    
+    
+                }
+                
+                
+                
+            }
+        }
+
+        .account {
+            padding-top: 2rem;
+            border-left: 1px solid $gray-400;
+            
+            
+            
+            
+
+            .content {
+                width: 852px;
+                margin-left: 100px;
+                
+                
+                
+                
+
+                h5 {
+                    color: $theme;
+                }
+
+                .basic-info {
+                    padding-bottom: 2rem;
+                    border-bottom: 1px solid $gray-400;
+                    
+                    
+
+                    .names {
+                        display: flex;
+                        gap: 1rem;
+                        
+                        
+                        
+
+                        .form {
+                            display: flex;
+                            flex-direction: column;
+                            @include form-standard;
+                            width: 100%;
+
+                            input {
+                                @include input-standard;
+                                width: 100%;
+
+                                &::placeholder {
+                                    color: $gray-700;
+                                }
+                            }
+                        }
+                    }
+
+                    .contact {
+                        display: flex;
+                        gap: 1rem;
+                        
+
+                        .form {
+                            display: flex;
+                            flex-direction: column;
+                            @include form-standard;
+                            width: 100%;
+
+                            input {
+                                @include input-standard;
+                                width: 100%;
+
+                                &::placeholder {
+                                    color: $gray-700;
+                                }
+                            }
+                        }
+                    }
+
+                    .bio {
+                        display: flex;
+                        flex-direction: column;
+                        @include form-standard;
+                        border: none;
+
+                        textarea {
+                            resize: none;
+                            border-color: $gray-400;
+                            padding: 1rem;
+                        }
+                        
+
+                        span {
+                            color: $gray-600;
+                        }
+
+                    }
+
+                    .buttons {
+                        padding-top: 1rem;
+                        display: flex;
+                        gap: 1rem;
+
+                        
+                        
+                    }
+                }
+
+                .address {
+                    padding-top: 2rem;
+                    padding-bottom: 5rem;
+
+                    .form {
+                        display: flex;
+                        flex-direction: column;
+                        @include form-standard;
+
+                        input {
+                            @include input-standard;
+                        }
+                    }
+
+                    .city-postalcode {
+                        display: flex;
+                        gap: 1rem;
+
+                        .form {
+                            width: 100%;
+                        }
+                    }
+
+                    .buttons {
+                        display: flex;
+                        gap: 1rem;
+                    }
+                }
+                
+            }
+        }
+    }
+}

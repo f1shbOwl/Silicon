@@ -1,0 +1,84 @@
+#courses {
+    padding-top: 5rem;
+
+    .container {
+
+        a {
+            text-decoration: none;
+            color: $gray-600;
+        }
+
+        .active {
+            @include text-m;
+            color: $theme;
+            
+        }
+
+
+        .courses-nav {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } 
+
+        .dropdown {
+            display: flex;
+            gap: 1.5rem;
+
+           
+            select {
+                width: 240px;
+                border-radius: 5px;
+                box-shadow: none;
+                border: 1px solid $gray-400;
+                padding: 10px;
+                appearance: none;
+                background-image: url(/images/dropdown-arrow.svg);
+                background-repeat: no-repeat;
+                background-position: right 1rem center;
+                outline: none;
+
+                &::placeholder {
+                    @include text-s;
+                    color: $gray-700;
+                }
+                
+            }
+            
+        }
+
+        .search {
+
+            input {
+                
+                width: 300px;
+                border-radius: 5px;
+                box-shadow: none;
+                border: 1px solid $gray-400;
+                padding: 10px;
+                outline: none;
+                background-image: url(/images/bx-search.svg);
+                background-repeat: no-repeat;
+                background-position: right 1rem center;
+
+
+                &::placeholder {
+                    @include text-s;
+                    color: $gray-500;
+                }
+            }
+
+            input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+            input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+
+            input[type=search]::-webkit-search-decoration,
+            input[type=search]::-webkit-search-cancel-button,
+            input[type=search]::-webkit-search-results-button,
+            input[type=search]::-webkit-search-results-decoration { display: none; }
+
+            
+
+        }
+    }
+}

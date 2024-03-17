@@ -24,6 +24,19 @@
     } 
 }
 
+.btn-transparent {
+    @include button;
+    background: $gray-200;
+    border: none;
+    background-color: transparent;
+    color: $gray-800;
+
+    &:hover {
+        color: $gray-800;
+        text-decoration: underline;
+    }
+}
+
 .btn-theme-s {
     @include button;
     @include theme-shadow;

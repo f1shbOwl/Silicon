@@ -391,8 +391,11 @@ form {
 form .input-group {
   display: grid;
 }
+form .checkbox span {
+  display: block;
+}
 form .checkbox span.field-validation-error {
-  position: absolute;
+  position: static;
   top: 0;
   right: 0;
   line-height: 160%;

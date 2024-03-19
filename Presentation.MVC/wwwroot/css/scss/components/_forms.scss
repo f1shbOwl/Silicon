@@ -9,8 +9,10 @@ form {
 
     .checkbox {
         span {
+            display: block;
+
             &.field-validation-error {
-                position: absolute;
+                position: static;
                 top: 0;
                 right: 0;
                 @include text-s;

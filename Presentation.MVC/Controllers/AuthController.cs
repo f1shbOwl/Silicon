@@ -1,17 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infrastructure.Entities;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Presentation.MVC.ViewModels.Sections;
 
 namespace Presentation.MVC.Controllers;
 
-public class AuthController : Controller
+public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
 {
+    private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
+
     public IActionResult Index()
     {
         ViewData["Title"] = "Profile";
         return View();
     }
-
-
 
     /// <summary>
     /// Sign up
@@ -21,18 +26,42 @@ public class AuthController : Controller
     [HttpGet]
     public IActionResult SignUp()
     {
-        var viewModel = new SignUpViewModel();
-        return View(viewModel);
+        if (_signInManager.IsSignedIn(User))
+            return RedirectToAction("Index", "Home");
+
+        return View();
     }
 
     [Route("/signup")]
     [HttpPost]
-    public IActionResult SignUp(SignUpViewModel viewModel)
+    public async Task <IActionResult> SignUp(SignUpViewModel viewModel)
     {
-        if (!ModelState.IsValid)
-            return View(viewModel);
+        if (ModelState.IsValid)
+        {
+            var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.Email);
+            if (exists)
+            {
+                ModelState.AddModelError("Already exist", "User with the same email address already exists");
+                ViewData["ErrorMessage"] = "User with the same email address already exists";
+                return View(viewModel);
+            }
 
-        return RedirectToAction("SignIn", "Auth");
+            var userEntity = new UserEntity
+            {
+                FirstName = viewModel.FirstName,
+                LastName = viewModel.LastName,
+                Email = viewModel.Email,
+                UserName = viewModel.Email,
+            };
+
+            var result = await _userManager.CreateAsync(userEntity, viewModel.Password);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("SignIn", "Auth");
+            }
+        }
+
+        return View(viewModel);
     }
 
     /// <summary>
@@ -43,26 +72,29 @@ public class AuthController : Controller
     [HttpGet]
     public IActionResult SignIn()
     {
-        var viewModel = new SignInViewModel();
-        return View(viewModel);
+
+        if (_signInManager.IsSignedIn(User))
+            return RedirectToAction("Index", "Home");
+
+        return View();
     }
 
     [Route("/signin")]
     [HttpPost]
-    public IActionResult SignIn(SignInViewModel viewModel)
+    public async Task <IActionResult> SignIn(SignInViewModel viewModel)
     {
+        if (ModelState.IsValid)
+        {
+            var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
 
-        if (!ModelState.IsValid)
-            return View(viewModel);
-
-        //var result = _authService.SignIn(viewmModel.Form);
-        //if (result)
-        //    return RedirectToAction("Account", "Index");
-
-        viewModel.ErrorMessage = "Incorrect email or password";
+        ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
+        ViewData["ErrorMessage"] = "Incorrect email or password";
         return View(viewModel);
-
-        
     }
 
 
@@ -72,9 +104,12 @@ public class AuthController : Controller
     /// Sign out
     /// </summary>
     /// <returns></returns>
-    public new IActionResult SignOut()
+    [Route("/signout")]
+    [HttpGet]
+    public new async Task <ActionResult> SignOut()
     {
+        await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
-    
+
 }

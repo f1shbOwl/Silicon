@@ -1,6 +1,8 @@
 using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using Presentation.MVC.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
@@ -16,6 +18,19 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
     x.Password.RequiredLength = 8;
 }).AddEntityFrameworkStores<DataContext>();
 
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.Cookie.HttpOnly = true;
+    x.LoginPath = "/signin";
+    x.LogoutPath = "/signout";
+    x.AccessDeniedPath = "/denied";
+    x.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    x.SlidingExpiration = true;
+    x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
+
+
+builder.Services.AddScoped<AddressManager>();
 
 
 var app = builder.Build();
@@ -29,7 +44,12 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseUserSessionValidation();
 app.UseAuthorization();
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

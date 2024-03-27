@@ -1,43 +1,203 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infrastructure.Entities;
+using Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Presentation.MVC.ViewModels.Account;
 using Presentation.MVC.ViewModels.Sections;
 
 namespace Presentation.MVC.Controllers;
 
-public class AccountController : Controller
+[Authorize]
+public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AddressManager addressManager) : Controller
 {
-    //private readonly AccountService _accountService;
 
-    // public AccountController(AccountService accountService)
-    // {
-    //     _accountService = accountService;
-    // }
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
+    private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly AddressManager _addressManager = addressManager;
 
 
-    [Route("/account")]
-    public IActionResult Details()
+
+    #region Account Details
+    [HttpGet]
+    [Route("/account/details")]
+    public async Task<IActionResult> Details()
     {
-        var viewModel = new AccountDetailsViewModel();
-        //viewModel.BasicInfo = _accountService.GetBasicInfo();
-        //viewModel.AddressInfo = _accountService.GetAddressInfo();
+        var viewModel = new AccountDetailsViewModel
+        {
+            ProfileInfo = await PopulateProfileInfoAsync()
+        };
+        viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
+        viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
+        return View(viewModel);
+    }
+    #endregion
+
+
+
+    #region Http Post Account Details
+    [HttpPost]
+    [Route("/account/details")]
+    public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
+    {
+        if (viewModel.BasicInfo != null)
+        {
+            if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user != null)
+                {
+                    user.FirstName = viewModel.BasicInfo.FirstName;
+                    user.LastName = viewModel.BasicInfo.LastName;
+                    user.Email = viewModel.BasicInfo.Email;
+                    user.PhoneNumber = viewModel.BasicInfo.Phone;
+                    user.Bio = viewModel.BasicInfo.Biography;
+
+                    var result = await _userManager.UpdateAsync(user);
+                    if (!result.Succeeded)
+                    {
+                        ModelState.AddModelError("Error, data not saved", "Unable to save data");
+                        ViewData["ErrorMessage"] = "Unable to save data";
+                    }
+                }
+            }
+        }
+
+        if (viewModel.AddressInfo != null)
+        {
+            if (viewModel.AddressInfo.AddressLine_1 != null && viewModel.AddressInfo.AddressLine_2 != null && viewModel.AddressInfo.PostalCode != null && viewModel.AddressInfo.City != null)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user != null)
+                {
+
+                    var address = await _addressManager.GetAddressAsync(user.Id);
+                    if (address != null)
+                    {
+                        address.AddressLine_1 = viewModel.AddressInfo.AddressLine_1;
+                        address.AddressLine_2 = viewModel.AddressInfo.AddressLine_2;
+                        address.PostalCode = viewModel.AddressInfo.PostalCode;
+                        address.City = viewModel.AddressInfo.City;
+
+                        var result = await _addressManager.UpdateAddressAsync(address);
+                        if (!result)
+                        {
+                            ModelState.AddModelError("Error, data not saved", "Unable to save data");
+                            ViewData["ErrorMessage"] = "Unable to save data";
+                        }
+                    }
+                    else
+                    {
+                        address = new AddressEntity
+                        {
+                            UserId = user.Id,
+                            AddressLine_1 = viewModel.AddressInfo.AddressLine_1,
+                            AddressLine_2 = viewModel.AddressInfo.AddressLine_2,
+                            PostalCode = viewModel.AddressInfo.PostalCode,
+                            City = viewModel.AddressInfo.City,
+                        };
+
+                        var result = await _addressManager.CreateAddressAsync(address);
+                        if (!result)
+                        {
+                            ModelState.AddModelError("Error, data not saved", "Unable to save data");
+                            ViewData["ErrorMessage"] = "Unable to save data";
+                        }
+                    }
+                }
+            }
+        }
+
+
+        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+        viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
+        viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
 
         return View(viewModel);
     }
+    #endregion
 
+
+
+
+
+    #region Save Basic Info
     [HttpPost]
-    public IActionResult BasicInfo(AccountDetailsViewModel viewModel)
+    public IActionResult SaveBasicInfo(AccountDetailsViewModel viewModel)
     {
-
-        //_accountService.SaveBaseInfo(viewModel.BasicInfo);
-
-        return RedirectToAction(nameof(Details));
+        if (TryValidateModel(viewModel.BasicInfo))
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        return View("Details", viewModel);
     }
+    #endregion
 
+    #region Save Address Info
     [HttpPost]
-    public IActionResult AddressInfo(AccountDetailsViewModel viewModel)
+    public IActionResult SaveAddressInfo(AccountDetailsViewModel viewModel)
     {
-
-        //_accountService.SaveAddressInfo(viewModel.AddressInfo);
-        return RedirectToAction(nameof(Details));
+        if (TryValidateModel(viewModel.AddressInfo))
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        return View("Details", viewModel);
     }
+    #endregion
+
+
+
+
+    #region Populate Profile Info
+    private async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        return new ProfileInfoViewModel
+        {
+            FirstName = user!.FirstName,
+            LastName = user.LastName,
+            Email = user.Email!,
+        };
+    }
+    #endregion
+
+
+    #region Populate Basic Info
+    private async Task<BasicInfoViewModel> PopulateBasicInfoAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        return new BasicInfoViewModel
+        {
+            UserId = user!.Id,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email!,
+            Phone = user.PhoneNumber,
+            Biography = user.Bio,
+        };
+    }
+    #endregion
+
+
+    #region Populate Address Info
+    private async Task<AddressInfoViewModel> PopulateAddressInfoAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
+        {
+            var address = await _addressManager.GetAddressAsync(user.Id);
+            return new AddressInfoViewModel
+            {
+                AddressLine_1 = address.AddressLine_1,
+                AddressLine_2 = address.AddressLine_2,
+                PostalCode = address.PostalCode,
+                City = address.City,
+            };
+        }
+        return new AddressInfoViewModel();
+    }
+    #endregion
 
 }

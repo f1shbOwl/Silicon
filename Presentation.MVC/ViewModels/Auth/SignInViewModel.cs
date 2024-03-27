@@ -1,7 +1,8 @@
 ﻿using Presentation.MVC.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace Presentation.MVC.ViewModels.Sections;
+namespace Presentation.MVC.ViewModels.Auth;
+
 
 public class SignInViewModel
 {

@@ -13,9 +13,9 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
         base.OnModelCreating(builder);
 
         builder.Entity<UserEntity>()
-            .HasMany(u => u.Addresses)
-            .WithOne(a => a.User)
-            .HasForeignKey(a => a.UserId)
+            .HasOne(u => u.Address)
+            .WithMany(a => a.Users)
+            .HasForeignKey(u => u.AddressId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

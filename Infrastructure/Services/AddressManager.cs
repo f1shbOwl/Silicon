@@ -9,9 +9,9 @@ public class AddressManager(DataContext context)
     private readonly DataContext _context = context;
 
 
-    public async Task<AddressEntity> GetAddressAsync(string userId)
+    public async Task<AddressEntity> GetAddressAsync(int Id)
     {
-        var addressEntity = await _context.Addresses.FirstOrDefaultAsync(x => x.UserId == userId);
+        var addressEntity = await _context.Addresses.FirstOrDefaultAsync(x => x.Id == Id);
         return addressEntity!;
     }
 
@@ -24,7 +24,7 @@ public class AddressManager(DataContext context)
 
     public async Task<bool> UpdateAddressAsync(AddressEntity entity)
     {
-        var exist = await _context.Addresses.FirstOrDefaultAsync(x => x.UserId == entity.UserId);
+        var exist = await _context.Addresses.FirstOrDefaultAsync(x => x.Id == entity.Id);
         if (exist != null)
         {
             _context.Entry(exist).CurrentValues.SetValues(entity);

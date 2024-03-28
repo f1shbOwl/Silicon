@@ -70,7 +70,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                 var user = await _userManager.GetUserAsync(User);
                 if (user != null)
                 {
-                    var address = await _addressManager.GetAddressAsync(user.Id);
+                    var address = await _addressManager.GetAddressAsync(viewModel.AddressInfo.Id);
                     if (address != null)
                     {
                         address.AddressLine_1 = viewModel.AddressInfo.AddressLine_1;
@@ -89,7 +89,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                     {
                         address = new AddressEntity
                         {
-                            UserId = user.Id,
+                            Id = viewModel.AddressInfo.Id,
                             AddressLine_1 = viewModel.AddressInfo.AddressLine_1,
                             AddressLine_2 = viewModel.AddressInfo.AddressLine_2,
                             PostalCode = viewModel.AddressInfo.PostalCode,
@@ -167,8 +167,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
 
         return new BasicInfoViewModel
         {
-            UserId = user!.Id,
-            FirstName = user.FirstName,
+            FirstName = user!.FirstName,
             LastName = user.LastName,
             Email = user.Email!,
             Phone = user.PhoneNumber,
@@ -178,23 +177,51 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     #endregion
 
 
+
+
     #region Populate Address Info
     private async Task<AddressInfoViewModel> PopulateAddressInfoAsync()
     {
         var user = await _userManager.GetUserAsync(User);
-        if (user != null)
+        if (user != null && user.AddressId != null)
         {
-            var address = await _addressManager.GetAddressAsync(user.Id);
-            return new AddressInfoViewModel
+            var address = await _addressManager.GetAddressAsync(user.AddressId.Value);
+            if (address != null)
             {
-                AddressLine_1 = address.AddressLine_1,
-                AddressLine_2 = address.AddressLine_2,
-                PostalCode = address.PostalCode,
-                City = address.City,
-            };
+                return new AddressInfoViewModel
+                {
+                    Id = address.Id,
+                    AddressLine_1 = address.AddressLine_1,
+                    AddressLine_2 = address.AddressLine_2,
+                    PostalCode = address.PostalCode,
+                    City = address.City,
+                };
+            }
         }
         return new AddressInfoViewModel();
     }
     #endregion
+
+
+
+
+    //#region Populate Address Info
+    //private async Task<AddressInfoViewModel> PopulateAddressInfoAsync()
+    //{
+    //    var user = await _userManager.GetUserAsync(User);
+    //    if (user != null)
+    //    {
+    //        var address = await _addressManager.GetAddressAsync(user.AddressId);
+    //        return new AddressInfoViewModel
+    //        {
+    //            AddressLine_1 = address.AddressLine_1,
+    //            AddressLine_2 = address.AddressLine_2,
+    //            PostalCode = address.PostalCode,
+    //            City = address.City,
+    //        };
+    //    }
+    //    return new AddressInfoViewModel();
+    //}
+    //#endregion
 
 }

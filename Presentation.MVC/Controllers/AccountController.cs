@@ -70,7 +70,6 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                 var user = await _userManager.GetUserAsync(User);
                 if (user != null)
                 {
-
                     var address = await _addressManager.GetAddressAsync(user.Id);
                     if (address != null)
                     {
@@ -107,8 +106,6 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                 }
             }
         }
-
-
         viewModel.ProfileInfo = await PopulateProfileInfoAsync();
         viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
         viewModel.AddressInfo ??= await PopulateAddressInfoAsync();

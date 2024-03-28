@@ -70,7 +70,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     {
 
         if (_signInManager.IsSignedIn(User))
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Details", "Account");
 
         ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
         return View();
@@ -88,7 +88,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
                 if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     return Redirect(returnUrl);
 
-                return RedirectToAction("Account", "Details");
+                return RedirectToAction("Details", "Account");
             }
         }
 

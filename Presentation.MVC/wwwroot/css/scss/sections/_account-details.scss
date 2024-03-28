@@ -12,6 +12,25 @@
             margin: 20px;
             text-align: center;
 
+            .avatar {
+                position: relative;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+
+                button {
+                    position: absolute;
+                    border: 2px solid $gray-300;
+                    height: 36px;
+                    width: 36px;
+                    border-radius: 50%;
+                    background-color: white;
+                    margin-left: 5rem;
+                }
+            }
+
+
+
             h5 {
                 margin-top: 15px;
                 margin-bottom: 0px;

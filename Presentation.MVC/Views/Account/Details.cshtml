@@ -17,13 +17,16 @@
 
         <aside>
             <div class="profile-info">
-                <img src="~/images/avatar.svg" alt="@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")" />
+                <div class="avatar">
+                    <img src="~/images/avatar.svg" alt="@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")" />
+                    <button><i class="fa-regular fa-arrows-rotate-reverse"></i></button>
+                </div>
                 <h5>@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")</h5>
                 <p>@Model.ProfileInfo.Email</p>
             </div>
 
             <nav>
-                <a class="btn-theme-s" asp-controller="Account" asp-action="Details">Account Details</a>
+                <a class="btn-theme-s" asp-controller="Account" asp-action="Details"><i class="fa-regular fa-gear"></i>Account Details</a>
                 <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-light fa-arrow-right-from-bracket"></i><span>Sign out</span></a>
             </nav>
         </aside>

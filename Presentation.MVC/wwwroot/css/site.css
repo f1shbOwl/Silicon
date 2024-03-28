@@ -1634,6 +1634,21 @@ header .container .btn-mobile {
   margin: 20px;
   text-align: center;
 }
+#account-details aside .profile-info .avatar {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+#account-details aside .profile-info .avatar button {
+  position: absolute;
+  border: 2px solid #E2E5F1;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background-color: white;
+  margin-left: 5rem;
+}
 #account-details aside .profile-info h5 {
   margin-top: 15px;
   margin-bottom: 0px;

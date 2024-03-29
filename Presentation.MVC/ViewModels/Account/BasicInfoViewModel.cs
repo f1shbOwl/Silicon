@@ -5,6 +5,8 @@ namespace Presentation.MVC.ViewModels.Account;
 public class BasicInfoViewModel
 {
 
+    public int AddressId { get; set; }
+
     [DataType(DataType.ImageUrl)]
     public string? ProfileImage { get; set; }
 

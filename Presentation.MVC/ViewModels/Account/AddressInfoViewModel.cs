@@ -5,7 +5,8 @@ namespace Presentation.MVC.ViewModels.Account
     public class AddressInfoViewModel
     {
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
+
 
         [Display(Name = "Address line 1", Prompt = "Enter your address line", Order = 0)]
         public string AddressLine_1 { get; set; } = null!;

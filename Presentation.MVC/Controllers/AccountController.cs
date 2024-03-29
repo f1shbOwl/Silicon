@@ -65,44 +65,17 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
 
         if (viewModel.AddressInfo != null)
         {
-            if (viewModel.AddressInfo.AddressLine_1 != null && viewModel.AddressInfo.AddressLine_2 != null && viewModel.AddressInfo.PostalCode != null && viewModel.AddressInfo.City != null)
+            if (viewModel.AddressInfo.AddressLine_1 != null && viewModel.AddressInfo.PostalCode != null && viewModel.AddressInfo.City != null)
             {
+                var addressId = await _addressManager.GetOrCreateAddressAsync(viewModel.AddressInfo.AddressLine_1, viewModel.AddressInfo.AddressLine_2, viewModel.AddressInfo.PostalCode, viewModel.AddressInfo.City);
+
                 var user = await _userManager.GetUserAsync(User);
                 if (user != null)
                 {
-                    var address = await _addressManager.GetAddressAsync(viewModel.AddressInfo.Id);
-                    if (address != null)
-                    {
-                        address.AddressLine_1 = viewModel.AddressInfo.AddressLine_1;
-                        address.AddressLine_2 = viewModel.AddressInfo.AddressLine_2;
-                        address.PostalCode = viewModel.AddressInfo.PostalCode;
-                        address.City = viewModel.AddressInfo.City;
 
-                        var result = await _addressManager.UpdateAddressAsync(address);
-                        if (!result)
-                        {
-                            ModelState.AddModelError("Error, data not saved", "Unable to save data");
-                            ViewData["ErrorMessage"] = "Unable to save data";
-                        }
-                    }
-                    else
-                    {
-                        address = new AddressEntity
-                        {
-                            Id = viewModel.AddressInfo.Id,
-                            AddressLine_1 = viewModel.AddressInfo.AddressLine_1,
-                            AddressLine_2 = viewModel.AddressInfo.AddressLine_2,
-                            PostalCode = viewModel.AddressInfo.PostalCode,
-                            City = viewModel.AddressInfo.City,
-                        };
+                    user.AddressId = addressId;
 
-                        var result = await _addressManager.CreateAddressAsync(address);
-                        if (!result)
-                        {
-                            ModelState.AddModelError("Error, data not saved", "Unable to save data");
-                            ViewData["ErrorMessage"] = "Unable to save data";
-                        }
-                    }
+                    await _userManager.UpdateAsync(user);
                 }
             }
         }
@@ -190,7 +163,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
             {
                 return new AddressInfoViewModel
                 {
-                    Id = address.Id,
+                    Id = user.AddressId,
                     AddressLine_1 = address.AddressLine_1,
                     AddressLine_2 = address.AddressLine_2,
                     PostalCode = address.PostalCode,

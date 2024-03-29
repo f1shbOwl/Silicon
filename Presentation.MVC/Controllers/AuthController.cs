@@ -72,13 +72,13 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         if (_signInManager.IsSignedIn(User))
             return RedirectToAction("Details", "Account");
 
-        ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
+        ViewData["ReturnUrl"] = returnUrl ?? Url.Content("");
         return View();
     }
 
     [Route("/signin")]
     [HttpPost]
-    public async Task <IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
+    public async Task <IActionResult> SignIn(SignInViewModel viewModel, string? returnUrl)
     {
         if (ModelState.IsValid)
         {

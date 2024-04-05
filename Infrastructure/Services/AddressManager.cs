@@ -18,7 +18,6 @@ public class AddressManager(DataContext context)
         }
         catch (Exception)
         {
-
             throw;
         }
     }

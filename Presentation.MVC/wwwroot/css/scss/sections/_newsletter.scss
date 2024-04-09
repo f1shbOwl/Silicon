@@ -1,98 +1,90 @@
 #newsletter {
     background-color: $gray-100;
+    padding: 4rem 0;
 
 
     .container {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
-        display: flex;
-        flex-direction: column;
-        max-width: 800px;
 
-        
+        @media (min-width: 2200px) {
+            width: 45%;
+        }
+
+        width: 50%;
+
+
         .heading {
             display: flex;
-            gap: 2rem;
-            padding-bottom: 2rem;
+            align-items: center;
+            gap: 20px;
         }
 
+        form {
 
-        .content {
-            display: flex;
-
-
-            .text {
-                max-width: 150px;
-            }
-
-
-            .check-boxes {
+            .signup {
+                margin: 2rem 0;
                 display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                padding-bottom: 2rem;
-                
+                grid-template-columns: 1fr 3fr;
 
-                .form-check {
-                    padding-left: 3rem;
-                    
-
-                    input[type=checkbox] {
-                        border: 2px solid $gray-500;
-                        box-shadow: none;
-                        width: 18px;
-                        height: 18px;
-                        margin-right: 10px;
-                    }
-
-                    input[type=checkbox]:checked {
-                        border: 2px solid $theme;
-                        background-color: $theme;
-                    }
-                }
-
-            }
-
-
-        }
-
-
-        .subscribe {
-            display: flex;
-            gap: 1rem;
-            padding-bottom: 0.5rem;
-
-            .form-group {
-                
-
-                input {
-                    width: 600px;
-                    padding: 12px 35px;
-                    border-radius: 8px;
-
+                @media (min-width: 1000px) {
+                    margin-right: 3rem;
                 }
 
 
+                h5 {
+                    width: 150px;
+                }
 
+                .options {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+
+                    .checkbox-group {
+
+
+                        .input-group {
+                            display: flex;
+                            align-items: center;
+
+
+                            input {
+                                border: 2px solid $gray-500;
+                                box-shadow: none;
+                            }
+
+                            label {
+                                margin-left: 10px;
+                            }
+                        }
+                    }
+                }
             }
 
-            .form-control {
-                background-image: url('/images/bx-envelope.svg');
-                background-repeat: no-repeat;
-                background-position: 10px;
+            .subscribe {
+                display: grid;
+                align-items: center;
+                grid-template-columns: 1fr auto;
+                gap: 1.5rem;
 
+                button {
+                    padding: 10px 25px;
+                }
+
+                .input-group {
+                    position: relative;
+
+                    i {
+                        color: $gray-400;
+                        position: absolute;
+                        left: 20px;
+                        top: 15px;
+                        font-size: 1.3rem;
+                    }
+
+                    input {
+                        padding-left: 55px;
+                    }
+                }
             }
-
-            .form-control::placeholder {
-                color: $gray-500;
-            }
-
         }
-
-
-        
-        .terms {
-            display: flex;
-        }
-
     }
 }

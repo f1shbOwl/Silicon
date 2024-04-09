@@ -1,0 +1,40 @@
+﻿@model CourseRegistrationViewModel
+
+
+
+<form asp-action="Create" asp-controller="Course" method="post">
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+    </div>
+    <div>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" />
+    </div>
+    <div>
+        <label asp-for="DiscountPrice"></label>
+        <input asp-for="DiscountPrice" />
+    </div>
+    <div>
+        <label asp-for="Hours"></label>
+        <input asp-for="Hours" />
+    </div>
+    <div>
+        <label asp-for="IsBestSeller"></label>
+        <input asp-for="IsBestSeller" />
+    </div>
+    <div>
+        <label asp-for="LikesInNumbers"></label>
+        <input asp-for="LikesInNumbers" />
+    </div>
+    <div>
+        <label asp-for="LikesInProcent"></label>
+        <input asp-for="LikesInProcent" />
+    </div>
+    <div>
+        <label asp-for="Author"></label>
+        <input asp-for="Author" />
+    </div>
+    <button type="sumbit">Add Course</button>
+
+</form>

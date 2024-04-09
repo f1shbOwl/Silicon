@@ -7,7 +7,7 @@ using Presentation.MVC.Helpers;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpClient();
 
 
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));

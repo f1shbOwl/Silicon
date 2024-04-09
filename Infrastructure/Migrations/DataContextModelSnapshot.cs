@@ -64,6 +64,10 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Hours")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsBestSeller")
                         .HasColumnType("bit");
 
@@ -93,9 +97,27 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("AdvertisingUpdates")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("DailyNewsletter")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EventUpdates")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Podcasts")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("StartupsWeekly")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("WeekInReview")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -157,6 +179,9 @@ namespace Infrastructure.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ProfileImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");

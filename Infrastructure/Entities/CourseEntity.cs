@@ -1,4 +1,7 @@
-﻿namespace Infrastructure.Entities;
+﻿using Infrastructure.Dtos;
+using Infrastructure.Models;
+
+namespace Infrastructure.Entities;
 
 public class CourseEntity
 {
@@ -11,5 +14,6 @@ public class CourseEntity
     public string? LikesInNumbers { get; set; }
     public string? LikesInProcent { get; set; }
     public string? Author { get; set; }
+    public string Image { get; set; } = null!;
 
 }

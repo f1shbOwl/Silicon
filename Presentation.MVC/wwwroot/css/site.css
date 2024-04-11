@@ -1190,19 +1190,50 @@ header .container .btn-mobile {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
+#browse-courses .container {
+  padding: 0;
+}
 #browse-courses .container .course-boxes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.5rem;
 }
 #browse-courses .container .course-boxes .box {
+  position: relative;
   border: 1px solid #F3F6FF;
   box-shadow: 0px 4px 13px -2px rgba(19, 16, 34, 0.06), 0px 4.8px 24.4px -6px rgba(19, 16, 34, 0.1);
   border-radius: 10px;
   margin-bottom: 1.5rem;
+  padding: 0;
+  z-index: 1;
 }
 #browse-courses .container .course-boxes .box:hover {
   box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
+}
+#browse-courses .container .course-boxes .box .bestseller {
+  top: 10px;
+  left: 10px;
+  padding: 6px 9px;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: white;
+  position: absolute;
+  background-color: #22C55E;
+  border-radius: 8px;
+}
+#browse-courses .container .course-boxes .box .btn-bookmark {
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  height: 36px;
+  width: 36px;
+  z-index: 10;
 }
 #browse-courses .container .course-boxes .box img {
   width: 100%;
@@ -1211,6 +1242,7 @@ header .container .btn-mobile {
 }
 #browse-courses .container .course-boxes .box .box-content {
   margin: 20px;
+  text-align: left;
 }
 #browse-courses .container .course-boxes .box .box-content .title {
   padding-top: 1rem;
@@ -1222,7 +1254,9 @@ header .container .btn-mobile {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
 }
-#browse-courses .container .course-boxes .box .box-content .price {
+#browse-courses .container .course-boxes .box .box-content .pricing {
+  display: flex;
+  gap: 1rem;
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -1231,18 +1265,29 @@ header .container .btn-mobile {
   color: #6366F1;
   font-weight: 700;
 }
-#browse-courses .container .course-boxes .box .box-content .length-rating {
+#browse-courses .container .course-boxes .box .box-content .pricing .discount-enabled {
+  color: #9397AD;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  text-decoration: line-through;
+}
+#browse-courses .container .course-boxes .box .box-content .pricing .discount-price {
+  color: #EF4444;
+}
+#browse-courses .container .course-boxes .box .box-content .hours-rating {
   border-top: 1px solid #E2E5F1;
   display: flex;
   padding-top: 1.5rem;
   align-items: center;
 }
-#browse-courses .container .course-boxes .box .box-content .length-rating img {
+#browse-courses .container .course-boxes .box .box-content .hours-rating img {
   height: 20px;
   width: 20px;
   margin-right: 5px;
 }
-#browse-courses .container .course-boxes .box .box-content .length-rating p {
+#browse-courses .container .course-boxes .box .box-content .hours-rating p {
   line-height: 160%;
   font-weight: 400;
   color: #565973;

@@ -56,6 +56,7 @@ public class CoursesController(DataContext context) : ControllerBase
                 LikesInNumbers = form.LikesInNumbers,
                 LikesInProcent = form.LikesInProcent,
                 Author = form.Author,
+                Image = form.Image
             };
 
 
@@ -64,6 +65,29 @@ public class CoursesController(DataContext context) : ControllerBase
 
             return Created("", (Course)courseEntity);
 
+        }
+        return BadRequest();
+    }
+    #endregion
+
+
+    #region DeleteOne
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteOne(int id)
+    {
+
+        if (ModelState.IsValid)
+        {
+            var course = await _context.Courses.FirstOrDefaultAsync(x => x.Id == id);
+            if (course != null)
+            {
+                _context.Courses.Remove(course);
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+            return NotFound();
         }
         return BadRequest();
     }

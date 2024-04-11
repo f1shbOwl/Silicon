@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+
 
 namespace Infrastructure.Dtos;
 
@@ -18,4 +14,5 @@ public class CourseRegistration
     public string? LikesInNumbers { get; set; }
     public string? LikesInProcent { get; set; }
     public string? Author { get; set; }
+    public string Image { get; set; } = null!;
 }

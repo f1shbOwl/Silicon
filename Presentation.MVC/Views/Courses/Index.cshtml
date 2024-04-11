@@ -1,0 +1,89 @@
+﻿@model CourseIndexViewModel
+
+@{
+    ViewData["Title"] = "Courses | ";
+}
+
+<section id="courses">
+    <div class="container">
+        <img src="/images/bx-home-alt.svg" alt="">
+        <a asp-action="Index" asp-controller="Home">Home</a>
+        <img src="/images/bx-chevrons-right.svg" alt="">
+        <a asp-action="Index" asp-controller="Courses" class="active">Courses</a>
+        <div class="courses-nav">
+            <h1>Courses</h1>
+            <div class="dropdown">
+                <select>
+                    <option value="">All categories</option>
+                </select>
+                <div class="search">
+                    <input type="search" name="" placeholder="Search courses">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="browse-courses">
+    <div class="container">
+        <div class="course-boxes">
+                @if (Model.Courses != null)
+                {
+                    @foreach(var course in Model.Courses)
+                    {
+                        <a class="box" asp-action="Details" asp-controller="Courses" asp-route-id="@course.Id">
+                            @if (course.IsBestSeller)
+                            {
+                                <div class="bestseller">Best Seller</div>
+                            }
+
+                            <button class="btn-bookmark" asp-action="Bookmark" asp-controller="Account"><i class="fa-regular fa-bookmark"></i></button>
+
+                            <img src="~/images/courses/@course.Image" alt="Course Image">
+
+                            <div class="box-content">
+                                <h5 class="title">@course.Title</h5>
+                                <p class="author">@course.Author</p>
+                                <div class="pricing">
+                                @if (!string.IsNullOrEmpty(course.DiscountPrice))
+                                {
+                                    <div class="discount-price">$@course.DiscountPrice</div>
+                                }
+                                <div class="price @(!string.IsNullOrEmpty(course.DiscountPrice)? "discount-enabled" : "")">$@course.Price</div>
+                            </div>
+                                <div class="hours-rating">
+                                    <img src="/images/bx-time-five.svg" alt="Image of a clock">
+                                    <p class="length">@course.Hours</p>
+                                    <img src="/images/bx-like.svg" alt="Image of a thumbs up">
+                                    <p class="rating-procent">@course.LikesInProcent</p>
+                                    <p class="rating-number">(@course.LikesInNumbers)</p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+        </div>
+        <div class="pagination">
+            <a href="#">❮</a>
+            <a href="#">1</a>
+            <a href="#" class="previous">2</a>
+            <a href="#" class="active">3</a>
+            <a href="#">4</a>
+            <a href="#">❯</a>
+        </div>
+    </div>
+</section>
+
+<section id="get-started">
+    <div class="container">
+        <div class="heading">
+            <p>Ready to get started?</p>
+            <h1>Take Your <span class="Skills">Skills</span> to the Next Level</h1>
+            <button class="btn-theme">Work with us</button>
+        </div>
+        <div class="image">
+            <img src="/images/illustration.svg" alt="">
+        </div>
+    </div>
+</section>

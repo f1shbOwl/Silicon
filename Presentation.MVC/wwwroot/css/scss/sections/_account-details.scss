@@ -13,19 +13,38 @@
             text-align: center;
 
             .avatar {
-                position: relative;
+                margin-top: 3rem;
                 display: flex;
                 align-items: flex-end;
                 justify-content: center;
 
-                button {
-                    position: absolute;
-                    border: 2px solid $gray-300;
-                    height: 36px;
-                    width: 36px;
-                    border-radius: 50%;
-                    background-color: white;
-                    margin-left: 5rem;
+                .image {
+                    position: relative;
+
+                    img {
+                        border-radius: 50%;
+                        border: none;
+                        height: 130px;
+                        width: 130px;
+                    }
+
+                    label {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        border: 2px solid $gray-300;
+                        height: 36px;
+                        width: 36px;
+                        border-radius: 50%;
+                        background-color: white;
+                        top: 6rem;
+                        left: 6rem;
+
+                        i {
+                            font-size: 15px;
+                        }
+                    }
                 }
             }
 

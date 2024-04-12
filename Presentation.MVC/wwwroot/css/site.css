@@ -526,6 +526,12 @@ header .container .account-buttons {
   display: none;
   gap: 15px;
 }
+header .container .account-buttons img {
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+}
 @media (min-width: 992px) {
   header .container .account-buttons {
     display: flex;
@@ -1205,7 +1211,7 @@ header .container .btn-mobile {
   border-radius: 10px;
   margin-bottom: 1.5rem;
   padding: 0;
-  z-index: 1;
+  margin: 5px;
 }
 #browse-courses .container .course-boxes .box:hover {
   box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
@@ -1233,7 +1239,9 @@ header .container .btn-mobile {
   background-color: white;
   height: 36px;
   width: 36px;
-  z-index: 10;
+}
+#browse-courses .container .course-boxes .box .btn-bookmark:hover i {
+  color: #6366F1;
 }
 #browse-courses .container .course-boxes .box img {
   width: 100%;
@@ -1241,11 +1249,14 @@ header .container .btn-mobile {
   border-top-right-radius: 10px;
 }
 #browse-courses .container .course-boxes .box .box-content {
-  margin: 20px;
+  margin: 15px;
   text-align: left;
+  width: 88%;
 }
 #browse-courses .container .course-boxes .box .box-content .title {
-  padding-top: 1rem;
+  margin: 0;
+  line-height: 25px;
+  margin-bottom: 7px;
 }
 #browse-courses .container .course-boxes .box .box-content .author {
   line-height: 160%;
@@ -1253,6 +1264,7 @@ header .container .btn-mobile {
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
+  margin-bottom: 7px;
 }
 #browse-courses .container .course-boxes .box .box-content .pricing {
   display: flex;
@@ -1264,6 +1276,9 @@ header .container .btn-mobile {
   font-size: 18px !important;
   color: #6366F1;
   font-weight: 700;
+}
+#browse-courses .container .course-boxes .box .box-content .pricing .price {
+  margin-bottom: 7px;
 }
 #browse-courses .container .course-boxes .box .box-content .pricing .discount-enabled {
   color: #9397AD;
@@ -1279,8 +1294,19 @@ header .container .btn-mobile {
 #browse-courses .container .course-boxes .box .box-content .hours-rating {
   border-top: 1px solid #E2E5F1;
   display: flex;
-  padding-top: 1.5rem;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  padding: 1rem 0 0.5rem 0;
+  gap: 1rem;
+}
+#browse-courses .container .course-boxes .box .box-content .hours-rating .hours {
+  display: flex;
+  margin: 0;
+}
+#browse-courses .container .course-boxes .box .box-content .hours-rating .rating {
+  display: flex;
+  margin: 0;
 }
 #browse-courses .container .course-boxes .box .box-content .hours-rating img {
   height: 20px;
@@ -1294,7 +1320,7 @@ header .container .btn-mobile {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   margin: 0;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 #browse-courses .container .pagination {
   padding-top: 2rem;
@@ -1689,19 +1715,35 @@ header .container .btn-mobile {
   text-align: center;
 }
 #account-details aside .profile-info .avatar {
-  position: relative;
+  margin-top: 3rem;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
-#account-details aside .profile-info .avatar button {
+#account-details aside .profile-info .avatar .image {
+  position: relative;
+}
+#account-details aside .profile-info .avatar .image img {
+  border-radius: 50%;
+  border: none;
+  height: 130px;
+  width: 130px;
+}
+#account-details aside .profile-info .avatar .image label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   border: 2px solid #E2E5F1;
   height: 36px;
   width: 36px;
   border-radius: 50%;
   background-color: white;
-  margin-left: 5rem;
+  top: 6rem;
+  left: 6rem;
+}
+#account-details aside .profile-info .avatar .image label i {
+  font-size: 15px;
 }
 #account-details aside .profile-info h5 {
   margin-top: 15px;

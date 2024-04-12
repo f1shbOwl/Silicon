@@ -38,7 +38,8 @@
                                 <div class="bestseller">Best Seller</div>
                             }
 
-                            <button class="btn-bookmark" asp-action="Bookmark" asp-controller="Account"><i class="fa-regular fa-bookmark"></i></button>
+                            @* Hade behövt ändra lite om denna knappen ska fungera. *@
+                            <button class="btn-bookmark" asp-action="Bookmark" asp-controller="Account"><i class="fa-regular fa-bookmark fa-"></i></button>
 
                             <img src="~/images/courses/@course.Image" alt="Course Image">
 
@@ -46,18 +47,22 @@
                                 <h5 class="title">@course.Title</h5>
                                 <p class="author">@course.Author</p>
                                 <div class="pricing">
-                                @if (!string.IsNullOrEmpty(course.DiscountPrice))
-                                {
-                                    <div class="discount-price">$@course.DiscountPrice</div>
-                                }
-                                <div class="price @(!string.IsNullOrEmpty(course.DiscountPrice)? "discount-enabled" : "")">$@course.Price</div>
-                            </div>
+                                    @if (!string.IsNullOrEmpty(course.DiscountPrice))
+                                    {
+                                        <div class="discount-price">$@course.DiscountPrice</div>
+                                    }
+                                    <div class="price @(!string.IsNullOrEmpty(course.DiscountPrice)? "discount-enabled" : "")">$@course.Price</div>
+                                </div>
                                 <div class="hours-rating">
-                                    <img src="/images/bx-time-five.svg" alt="Image of a clock">
-                                    <p class="length">@course.Hours</p>
+                                    <div class="hours">
+                                        <img src="/images/bx-time-five.svg" alt="Image of a clock">
+                                        <p class="hours">@course.Hours hours</p>
+                                    </div>
+                                    <div class="rating">
                                     <img src="/images/bx-like.svg" alt="Image of a thumbs up">
-                                    <p class="rating-procent">@course.LikesInProcent</p>
-                                    <p class="rating-number">(@course.LikesInNumbers)</p>
+                                        <p class="rating-procent">@course.LikesInProcent</p>
+                                        <p class="rating-number">(@course.LikesInNumbers)</p>
+                                    </div>
                                 </div>
                             </div>
                         </a>

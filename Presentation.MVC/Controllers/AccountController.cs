@@ -176,25 +176,10 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     #endregion
 
 
-
-
-    //#region Populate Address Info
-    //private async Task<AddressInfoViewModel> PopulateAddressInfoAsync()
-    //{
-    //    var user = await _userManager.GetUserAsync(User);
-    //    if (user != null)
-    //    {
-    //        var address = await _addressManager.GetAddressAsync(user.AddressId);
-    //        return new AddressInfoViewModel
-    //        {
-    //            AddressLine_1 = address.AddressLine_1,
-    //            AddressLine_2 = address.AddressLine_2,
-    //            PostalCode = address.PostalCode,
-    //            City = address.City,
-    //        };
-    //    }
-    //    return new AddressInfoViewModel();
-    //}
-    //#endregion
+    [HttpPost]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        return RedirectToAction("Details", "Account");
+    }
 
 }

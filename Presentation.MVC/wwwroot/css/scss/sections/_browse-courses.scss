@@ -18,7 +18,7 @@
                 border-radius: 10px;
                 margin-bottom: 1.5rem;
                 padding: 0;
-                z-index: 1;
+                margin: 5px;
 
                 &:hover {
                     @include theme-shadow;
@@ -44,7 +44,13 @@
                     background-color: white;
                     height: 36px;
                     width: 36px;
-                    z-index: 10;
+
+                    &:hover {
+
+                        i {
+                            color: $theme;
+                        }
+                    }
                 }
 
                 img {
@@ -54,15 +60,20 @@
                 }
 
                 .box-content {
-                    margin: 20px;
+                    margin: 15px;
                     text-align: left;
+                    width: 88%;
+
 
                     .title {
-                        padding-top: 1rem;
+                        margin: 0;
+                        line-height: 25px;
+                        margin-bottom: 7px;
                     }
 
                     .author {
                         @include text-s;
+                        margin-bottom: 7px;
                     }
 
                     .pricing {
@@ -71,17 +82,17 @@
                         @include text-lg;
                         color: $theme;
                         font-weight: 700;
-                        
+
+
 
                         .price {
-
+                            margin-bottom: 7px;
                         }
 
                         .discount-enabled {
                             color: $gray-600;
                             @include standard-text;
                             text-decoration: line-through;
-                            
                         }
 
                         .discount-price {
@@ -92,8 +103,22 @@
                     .hours-rating {
                         border-top: 1px solid $gray-300;
                         display: flex;
-                        padding-top: 1.5rem;
                         align-items: center;
+                        margin: 0;
+                        padding: 0;
+                        padding: 1rem 0 0.5rem 0;
+                        gap: 1rem;
+
+                        .hours {
+                            display: flex;
+                            margin: 0;
+                        }
+
+                        .rating {
+                            display: flex;
+                            margin: 0;
+                        }
+
 
 
                         img {
@@ -105,7 +130,7 @@
                         p {
                             @include text-s;
                             margin: 0;
-                            margin-right: 10px;
+                            margin-right: 5px;
                         }
                     }
                 }

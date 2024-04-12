@@ -43,6 +43,13 @@ header {
             display: none;
             gap: 15px;
 
+            img {
+                height: 50px;
+                width: 50px;
+                border: none;
+                border-radius: 50%;
+            }
+
             @include lg {
                 display: flex;
             }

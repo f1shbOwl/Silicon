@@ -1,4 +1,8 @@
 ﻿@inject SignInManager<UserEntity> _signInManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
     
 
 <header>
@@ -34,8 +38,7 @@
         <div class="account-buttons">
             @if (_signInManager.IsSignedIn(User))
             {
-                <a class="btn-gray" asp-controller="Auth" asp-action="SignOut"><i class="fa-light fa-arrow-right-from-bracket"></i><span>Sign out</span></a>
-                <a class="btn-theme" asp-controller="Account" asp-action="Details"><i class="fa-regular fa-user"></i><span>My account</span></a>
+                <a asp-controller="Account" asp-action="Details"><img src="~/images/profileImages/@user.ProfileImage" /></a>
             }
             else
             {

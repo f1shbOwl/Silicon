@@ -9,12 +9,13 @@ using Presentation.MVC.ViewModels.Sections;
 namespace Presentation.MVC.Controllers;
 
 [Authorize]
-public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AddressManager addressManager) : Controller
+public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AddressManager addressManager, AccountManager accountManager) : Controller
 {
 
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly AddressManager _addressManager = addressManager;
+    private readonly AccountManager _accountManager = accountManager;
 
 
 
@@ -179,6 +180,9 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     [HttpPost]
     public async Task<IActionResult> UploadImage(IFormFile file)
     {
+        var result = await _accountManager.UploadUserProfileImageAsync(User, file);
+
+
         return RedirectToAction("Details", "Account");
     }
 

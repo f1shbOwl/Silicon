@@ -13,8 +13,7 @@ public class UserEntity : IdentityUser
     [ProtectedPersonalData]
     public string? Bio {  get; set; }
 
-    [ProtectedPersonalData]
-    public string? ProfileImage { get; set; }
+    public string? ProfileImage { get; set; } = "avatar.jpg";
 
     public int? AddressId { get; set; }
     public AddressEntity? Address { get; set; }

@@ -38,7 +38,7 @@
         <div class="account-buttons">
             @if (_signInManager.IsSignedIn(User))
             {
-                <a asp-controller="Account" asp-action="Details"><img src="~/images/profileImages/@user.ProfileImage" /></a>
+                <a asp-controller="Account" asp-action="Details"><img src="~/uploads/@user.ProfileImage" /></a>
             }
             else
             {

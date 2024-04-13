@@ -31,6 +31,7 @@ builder.Services.ConfigureApplicationCookie(x =>
 
 
 builder.Services.AddScoped<AddressManager>();
+builder.Services.AddScoped<AccountManager>();
 
 
 var app = builder.Build();

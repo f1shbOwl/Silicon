@@ -9,41 +9,42 @@
         <form method="post" asp-action="Subscribe" asp-controller="Home" asp-fragment="newsletter">
             <div class="signup">
                 <h5>Sign up for Newsletters</h5>
+                
 
                 <div class="options">
                     <div class="checkbox-group">
                         <div class="input-group">
-                            <input asp-for="DailyNewsletter">
+                            <input asp-for="DailyNewsletter" type="checkbox">
                             <label asp-for="DailyNewsletter">Daily Newsletter</label>
                         </div>
                     </div>
                     <div class="checkbox-group">
                         <div class="input-group">
-                            <input asp-for="AdvertisingUpdates">
+                            <input asp-for="AdvertisingUpdates" type="checkbox">
                             <label asp-for="AdvertisingUpdates">Advertising Updates</label>
                         </div>
                     </div>
                     <div class="checkbox-group">
                         <div class="input-group">
-                            <input asp-for="WeekInReview">
+                            <input asp-for="WeekInReview" type="checkbox">
                             <label asp-for="WeekInReview">Week in Review</label>
                         </div>
                     </div>
                     <div class="checkbox-group">
                         <div class="input-group">
-                            <input asp-for="EventUpdates">
+                            <input asp-for="EventUpdates" type="checkbox">
                             <label asp-for="EventUpdates">Event Updates</label>
                         </div>
                     </div>
                     <div class="checkbox-group">
                         <div class="input-group">
-                            <input asp-for="StartupsWeekly">
+                            <input asp-for="StartupsWeekly" type="checkbox">
                             <label asp-for="StartupsWeekly">Startups Weekly</label>
                         </div>
                     </div>
                     <div class="checkbox-group">
                         <div class="input-group">
-                            <input asp-for="Podcasts">
+                            <input asp-for="Podcasts" type="checkbox">
                             <label asp-for="Podcasts">Podcasts</label>
                         </div>
                     </div>
@@ -54,6 +55,7 @@
                 <div class="input-group">
                     <i class="fa-regular fa-envelope"></i>
                     <input asp-for="Email">
+                    <span asp-validation-for="Email"></span>
                 </div>
                 <button class="btn-theme" type="submit">Subscribe *</button>
             </div>
@@ -71,3 +73,4 @@
         </form>
     </div>
 </section>
+

@@ -8,7 +8,7 @@ public class SignInViewModel
 {
     [Display(Name = "Email address", Prompt = "Enter your email address", Order = 0)]
     [DataType(DataType.EmailAddress)]
-    [Required(ErrorMessage = "Email is required")]
+    [Required(ErrorMessage = "Enter a valid email to sign in")]
     public string Email { get; set; } = null!;
 
     [Display(Name = "Password", Prompt = "Enter your password", Order = 1)]

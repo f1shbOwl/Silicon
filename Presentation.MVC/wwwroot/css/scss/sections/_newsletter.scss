@@ -45,10 +45,11 @@
                             display: flex;
                             align-items: center;
 
-
-                            input {
+                            input[type="checkbox"] {
                                 border: 2px solid $gray-500;
                                 box-shadow: none;
+                                width: 20px;
+                                height: 20px;
                             }
 
                             label {
@@ -83,6 +84,26 @@
                     input {
                         padding-left: 55px;
                     }
+
+                    span {
+                        &.field-validation-error {
+                            position: static;
+                            top: 0;
+                            right: 0;
+                            @include text-s;
+                            color: $danger;
+                        }
+                    }
+                }
+            }
+
+            .terms {
+                margin-top: 10px;
+                display: flex;
+                gap: 5px;
+
+                span {
+                    color: $theme;
                 }
             }
         }

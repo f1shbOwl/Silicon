@@ -1081,9 +1081,11 @@ header .container .btn-mobile {
   display: flex;
   align-items: center;
 }
-#newsletter .container form .signup .options .checkbox-group .input-group input {
+#newsletter .container form .signup .options .checkbox-group .input-group input[type=checkbox] {
   border: 2px solid #B4B7C9;
   box-shadow: none;
+  width: 20px;
+  height: 20px;
 }
 #newsletter .container form .signup .options .checkbox-group .input-group label {
   margin-left: 10px;
@@ -1109,6 +1111,25 @@ header .container .btn-mobile {
 }
 #newsletter .container form .subscribe .input-group input {
   padding-left: 55px;
+}
+#newsletter .container form .subscribe .input-group span.field-validation-error {
+  position: static;
+  top: 0;
+  right: 0;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
+}
+#newsletter .container form .terms {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+}
+#newsletter .container form .terms span {
+  color: #6366F1;
 }
 
 #courses {

@@ -22,7 +22,7 @@ public class SignUpViewModel
 
     [Display(Name = "Email address", Prompt = "Enter your email address", Order = 2)]
     [DataType(DataType.EmailAddress)]
-    [Required(ErrorMessage = "Email a valid email address")]
+    [Required(ErrorMessage = "Enter a valid email address")]
     [RegularExpression("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$", ErrorMessage = "Email a valid email address")]
     public string Email { get; set; } = null!;
 

@@ -6,7 +6,7 @@
             <h1>Don't Want to Miss Anything?</h1>
             <img src="./images/newsletter-arrow.svg" alt="">
         </div>
-        <form method="post" asp-action="Subscribe" asp-controller="Home" asp-fragment="newsletter">
+        <form method="post" asp-action="Subscribe" asp-controller="Home" asp-fragment="newsletter" novalidate>
             <div class="signup">
                 <h5>Sign up for Newsletters</h5>
                 
@@ -62,7 +62,15 @@
             <div class="terms">
                 @if (!string.IsNullOrEmpty(TempData["StatusMessage"]?.ToString()))
                 {
-                    @TempData["StatusMessage"]
+                    @if (TempData["StatusCode"]?.ToString() == "OK")
+                    {
+                        <span class="success">@TempData["StatusMessage"]</span>
+                    }
+                    else
+                    {
+                        <span class="error">@TempData["StatusMessage"]</span>
+                    }
+
                 }
                 else
                 {

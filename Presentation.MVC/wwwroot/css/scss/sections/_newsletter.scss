@@ -45,9 +45,7 @@
                             display: flex;
                             align-items: center;
 
-                            input[type="checkbox"] {
-                                border: 2px solid $gray-500;
-                                box-shadow: none;
+                            input {
                                 width: 20px;
                                 height: 20px;
                             }
@@ -102,8 +100,27 @@
                 display: flex;
                 gap: 5px;
 
+
                 span {
                     color: $theme;
+                }
+
+                .success {
+                    display: flex;
+                    background-color: #D4EDDA;
+                    color: black;
+                    padding: 15px;
+                    width: 50%;
+                    border-radius: 8px;
+                }
+
+                .error {
+                    display: flex;
+                    background-color: #F5D7DA;
+                    color: black;
+                    padding: 15px;
+                    width: 50%;
+                    border-radius: 8px;
                 }
             }
         }

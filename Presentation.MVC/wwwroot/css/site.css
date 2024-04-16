@@ -1081,9 +1081,7 @@ header .container .btn-mobile {
   display: flex;
   align-items: center;
 }
-#newsletter .container form .signup .options .checkbox-group .input-group input[type=checkbox] {
-  border: 2px solid #B4B7C9;
-  box-shadow: none;
+#newsletter .container form .signup .options .checkbox-group .input-group input {
   width: 20px;
   height: 20px;
 }
@@ -1130,6 +1128,22 @@ header .container .btn-mobile {
 }
 #newsletter .container form .terms span {
   color: #6366F1;
+}
+#newsletter .container form .terms .success {
+  display: flex;
+  background-color: #D4EDDA;
+  color: black;
+  padding: 15px;
+  width: 50%;
+  border-radius: 8px;
+}
+#newsletter .container form .terms .error {
+  display: flex;
+  background-color: #F5D7DA;
+  color: black;
+  padding: 15px;
+  width: 50%;
+  border-radius: 8px;
 }
 
 #courses {
@@ -1470,83 +1484,6 @@ header .container .btn-mobile {
   font-weight: 700;
 }
 
-/*#sign-in {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 5rem;
-    padding-bottom: 1rem;
-
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        width: 526px;
-
-        .heading {
-            display: flex;
-            flex-direction: column;
-            justify-content: left;
-            align-items: flex-start;
-
-        }
-
-        .form {
-            width: 500px;
-            display: flex;
-            flex-direction: column;
-            max-width: 800px;
-
-            @include form-standard;
-
-            input {
-                @include input-standard;
-            }
-
-        }
-
-        .form-check {
-
-            input[type=checkbox] {
-                border: 2px solid $gray-500;
-                box-shadow: none;
-                width: 18px;
-                height: 18px;
-                margin-right: 10px;
-            }
-
-            input[type=checkbox]:checked {
-                border: 2px solid $theme;
-                background-color: $theme;
-            }
-
-        }
-
-        .login {
-            padding-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            justify-content: center;
-            text-align: center;
-
-            a {
-                @include form-standard;
-                color: $theme;
-                padding-top: 1rem;
-            }
-
-            button {
-                width: 100%;
-                @include theme-shadow;
-            }
-
-
-        }
-
-    }
-}*/
 #signup {
   height: 100%;
 }

@@ -1,5 +1,4 @@
-﻿using Infrastructure.Entities;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Presentation.MVC.ViewModels.Views;
 using System.Text;
@@ -27,15 +26,18 @@ public class HomeController(HttpClient httpClient) : Controller
             var response = await _httpClient.PostAsync($"https://localhost:7143/api/subscribers?email={model.Email}", content);
             if (response.IsSuccessStatusCode)
             {
+                TempData["StatusCode"] = "OK";
                 TempData["StatusMessage"] = "You are now subscribed";
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
             {
+                TempData["StatusCode"] = "Conflict";
                 TempData["StatusMessage"] = "Email address is already subscribed";
             }
         }
         else 
         {
+            TempData["StatusCode"] = "Error";
             TempData["StatusMessage"] = "Invalid email address";
         }
 

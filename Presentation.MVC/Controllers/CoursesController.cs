@@ -52,17 +52,6 @@ public class CoursesController(HttpClient httpClient) : Controller
         return View(viewModel);
     }
 
-    //[HttpGet]
-    //[Route("/courses")]
-    //public async Task<IActionResult> Courses()
-    //{
-    //    using var http = new HttpClient();
-    //    var response = await http.GetAsync("https://localhost:7143/api/courses");
-    //    var json = await response.Content.ReadAsStringAsync();
-    //    var data = JsonConvert.DeserializeObject<IEnumerable<CourseEntity>>(json);
-
-    //    return View(data);
-    //}
 
     [HttpGet]
     [Route("/courses/SingleCourse")]
